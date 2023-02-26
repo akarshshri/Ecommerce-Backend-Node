@@ -4,6 +4,7 @@ const app = express()
 const connect = require("./src/config/db")
 const UserController = require("./src/controller/user.controller")
 const ProductController = require("./src/controller/product.controller")
+const FileController = require("./src/controller/file.controller")
 const verifyToken = require("./src/middleware/auth")
 
 
@@ -14,6 +15,8 @@ app.use(express.json())
 app.use("/user", verifyToken, UserController)
 
 app.use("/product", verifyToken ,ProductController)
+
+app.use("/fileUpload", verifyToken ,FileController)
 
 app.listen(3001, async ()=> { 
     try {

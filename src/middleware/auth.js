@@ -15,15 +15,14 @@ const tokenCheck = (token) =>{
 
 const verifyToken= (req, res, next)=>{
     const path = req.path;
-    console.log(req.path);
     if(path == "/register" || path == "/login"){
         next()
         return
     }
 
     let token = req.headers.token;
-    token = token.split(" ")[1]
-    if(tokenCheck(token))
+    token = token?.split(" ")[1]
+    if(token && tokenCheck(token))
         next()
     else{
         res.status(401).json({

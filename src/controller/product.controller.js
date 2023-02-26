@@ -1,5 +1,6 @@
 const express = require("express")
 const Product = require("../models/product.model")
+const uploadSingle = require("../middleware/uploadFile")
 
 const router = express.Router()
 
@@ -35,5 +36,6 @@ router.post("/search", async (req, res)=> {
         
     }
 })
+
 
 module.exports = router
