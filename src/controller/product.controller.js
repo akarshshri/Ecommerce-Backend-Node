@@ -26,8 +26,8 @@ router.post("/search", async (req, res)=> {
         // const product = await Product.find({ title: {$not: {$eq : "MOROCCANOIL"}} }).lean().exec(); // this will fetcha all the records except MOROCCANOIL
 
         // const product = await Product.find({ $and : [{title :{$eq : "AVEDA"}} , {price: {$lte : 800 }}] }).lean().exec(); // using multiple conditions
-        
-        const product = await Product.find({ $and : [{title :{$eq : "AVEDA"}} , {price: {$lte : 800 }}] }).lean().exec(); // using multiple conditions
+
+        const product = await Product.find({ title: { $regex: name, $options: 'i' } }).lean().exec(); // using multiple conditions
 
         res.send(product)
 
